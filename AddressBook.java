@@ -29,6 +29,45 @@ public class AddressBook {
 		LOG.info("Lastname" + Arrays.toString(Lastname));
 
 	}
+
+	public void replace(String name, String newname) {
+
+		boolean result = (Arrays.asList(Firstname).contains(name));
+		if (result == true) {
+			Firstname[0] = newname;
+		}
+		// boolean contains = Arrays.stream(Firstname).anyMatch("name"::equals);
+		// for(int i=0;i<10;i++)
+		// {
+
+		// }
+		LOG.info("Firstname" + Arrays.toString(Firstname));
+
+	}
+
+	public void delete(String name) {
+		for (int i = 0; i < 10; i++) {
+			boolean result = (Arrays.asList(Firstname).contains(name));
+			if (result == true) {
+				Firstname[i] = null;
+				Lastname[i] = null;
+				Address[i] = null;
+				phoneNumber[i] = null;
+
+				LOG.info("" + i);
+
+			}
+		} // boolean contains = Arrays.stream(Firstname).anyMatch("name"::equals);
+			// for(int i=0;i<10;i++)
+			// {
+
+		// }
+		LOG.info("Firstname" + Arrays.toString(Firstname));
+		LOG.info("Firstname" + Arrays.toString(Lastname));
+		LOG.info("Firstname" + Arrays.toString(Address));
+		LOG.info("Firstname" + Arrays.toString(phoneNumber));
+
+	}
 }
 
 class Contactdetails extends AddressBook {
@@ -41,30 +80,30 @@ class Contactdetails extends AddressBook {
 		Scanner value = new Scanner(System.in);
 
 		Contactdetails contact = new Contactdetails();
-		LOG.info("1.ADD 2.REPLACE 3.DELETE");
+		LOG.info("Press 1 fr ADD, press 2 for REPLACE, press 3 for DELETE");
 
 		// LOG.info("1.ADD 2.REPLACE 3.DELETE");
 		// 1LOG.info("enter Your Choice");
 		int Check = value.nextInt();
 		int choice;
 		do {
-			LOG.info("enter Your Choice");
+			LOG.info("Enter Your Choice");
 			Check = value.nextInt();
 			switch (Check) {
 			case 1:
-				LOG.info("enter the number of contact you want to add:");
+				LOG.info("Enter the number of contact you want to add:");
 				int length = value.nextInt();
 				for (int i = 0; i < length; i++) {
-					LOG.info("enter the phonenumber");
+					LOG.info("Enter the phonenumber");
 					int phonenumber = value.nextInt();
 
-					LOG.info("enter the address");
+					LOG.info("Enter the address");
 					String address = value.nextLine();
 
-					LOG.info("enter the firstname");
+					LOG.info("Enter the firstname");
 					String firstname = value.nextLine();
 
-					LOG.info("enter the lastname");
+					LOG.info("Enter the lastname");
 					String lastname = value.nextLine();
 
 					int time = i;
@@ -72,13 +111,34 @@ class Contactdetails extends AddressBook {
 				}
 				// contact.getValue(phonenumber,address,firstname,lastname);
 				break;
+			case 2:
+				Scanner sc = new Scanner(System.in);
+				LOG.info("Enter the name you want to rename");
+				String name = sc.nextLine();
+
+				Scanner next = new Scanner(System.in);
+				LOG.info("Enter the new name");
+				String newname = next.nextLine();
+
+				contact.replace(name, newname);
+
+				break;
+
+			case 3:
+				Scanner cvb = new Scanner(System.in);
+				LOG.info("Enter the name you want to rename");
+				name = cvb.nextLine();
+
+				contact.delete(name);
+
+				break;
 
 			default:
 				// empHr = 0;
 				break;
 
 			}
-			LOG.info("do you want to continue? 1.yes 2.No");
+			LOG.info("Do you want to continue then press  1 for yes and  2 for No");
 			choice = value.nextInt();
 		} while (choice == 1);
 
