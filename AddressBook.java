@@ -68,6 +68,30 @@ public class AddressBook {
 		LOG.info("Firstname" + Arrays.toString(phoneNumber));
 
 	}
+
+	public void addPerson(String name) {
+		for (int i = 0; i < 10; i++) {
+			boolean result = (Arrays.asList(Firstname).contains(name));
+			if (result == true) {
+				Firstname[i] = null;
+				Lastname[i] = null;
+				Address[i] = null;
+				phoneNumber[i] = null;
+
+				LOG.info("" + i);
+
+			}
+		} // boolean contains = Arrays.stream(Firstname).anyMatch("name"::equals);
+			// for(int i=0;i<10;i++)
+			// {
+
+		// }
+		LOG.info("Firstname" + Arrays.toString(Firstname));
+		LOG.info("Firstname" + Arrays.toString(Lastname));
+		LOG.info("Firstname" + Arrays.toString(Address));
+		LOG.info("Firstname" + Arrays.toString(phoneNumber));
+
+	}
 }
 
 class Contactdetails extends AddressBook {
@@ -130,6 +154,14 @@ class Contactdetails extends AddressBook {
 				name = cvb.nextLine();
 
 				contact.delete(name);
+
+				break;
+			case 4:
+				Scanner add = new Scanner(System.in);
+				LOG.info("Enter the name");
+				name = add.nextLine();
+
+				contact.addPerson(name);
 
 				break;
 
